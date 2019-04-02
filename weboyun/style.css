@@ -1,0 +1,32 @@
+	#tableid {	}
+
+	#puan    {	font-size:32pt;
+			color: white;}
+
+	#game    {	background-image:url('myGif.gif'); height: 100%;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			width: 60%;
+			margin-left:  20%;
+			margin-right:  20%;
+			margin-top:  2%;
+			margin-bottom:  1%;
+			padding-top: 2%;
+			padding-bottom:  2%;}
+
+	#skors   {	border:3px double black;
+			margin-left:  20%;
+			margin-right:  20%;}
+
+	body     {	background-color:grey;}
+
+	h1	 {	margin-top: 90px;
+			color: white;}
+
+	
+	img 	 {	border-radius:%50;
+			transition : all 0.2s ease-in-out;}
+
+	img:hover{	opacity:1;
+			transform: rotatex(30deg);}

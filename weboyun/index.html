@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GameBox</title>  
+<meta charset="utf-8">
+	<script src="js.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body onload="init();" >
+<center id="game">
+<h1>İKİZİ BUL<br></h1>
+<table id="tableid">
+	<tr>
+		<td onclick=clickt(0,0); onmousedown="setOpenPic(0,0)">
+			<img  id="a1">	
+		</td>
+		<td onclick=clickt(0,1) onmousedown="setOpenPic(0,1)" >
+			<img id="a2" >
+ 		</td>
+		<td onclick=clickt(0,2) onmousedown="setOpenPic(0,2)">
+			<img id="a3" >
+		</td>
+		<td onclick=clickt(0,3) onmousedown="setOpenPic(0,3)">
+			<img id="a4" > 
+		</td>
+	</tr>
+	<tr>
+		<td onclick=clickt(1,0) onmousedown="setOpenPic(1,0)" > 
+			<img id="b1" >
+		</td>
+		<td onclick=clickt(1,1) onmousedown="setOpenPic(1,1)">
+			<img id="b2" > 
+		</td>
+		<td onclick=clickt(1,2) onmousedown="setOpenPic(1,2)"> 
+			<img id="b3" >
+		</td>
+		<td onclick=clickt(1,3) onmousedown="setOpenPic(1,3)" >
+			<img id="b4" > 
+		</td>
+	</tr>
+	<tr>
+		<td onclick=clickt(2,0) onmousedown="setOpenPic(2,0)">
+			<img id="c1" > 
+		</td>
+		<td onclick=clickt(2,1) onmousedown="setOpenPic(2,1)">
+			<img id="c2" > 
+		</td>
+		<td onclick=clickt(2,2) onmousedown="setOpenPic(2,2)">
+			<img id="c3" > 
+		</td>
+		<td onclick=clickt(2,3) onmousedown="setOpenPic(2,3)">
+			<img id="c4" > 
+		</td>
+	</tr>
+	<tr>
+		<td onclick=clickt(3,0) onmousedown="setOpenPic(3,0)">
+			<img id="d1"  > 
+		</td>
+		<td onclick=clickt(3,1) onmousedown="setOpenPic(3,1)">
+			<img id="d2" > 
+		</td>
+		<td onclick=clickt(3,2) onmousedown="setOpenPic(3,2)">
+			<img id="d3" > 
+		</td>
+		<td onclick=clickt(3,3) onmousedown="setOpenPic(3,3)">
+			<img id="d4" > 
+		</td>
+	</tr>
+</table>
+
+
+<p id="puan"></p><br>
+<button onclick=init()> RESET</button>
+</center>
+
+<table id="skors">
+	
+</table>
+</body>
+</html> 
+
+
