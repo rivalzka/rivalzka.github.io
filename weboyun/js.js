@@ -1,6 +1,6 @@
 window.ondragstart = function() { return false; } 
 
-var meyveler=new Array("elma.png","karpuz.png","hiyar.png","armut.png",
+var fruits=new Array("elma.png","karpuz.png","hiyar.png","armut.png",
 			"nar.png","mandalina.png","portakal.png","muz.png");
 var closePic="close.png";
 var winPic="youwin.png";
@@ -25,11 +25,10 @@ var winSound=new Audio();
 winSound.src="ses3.mp3";
 var closeSound;
 
-var skorboard=new Array();
-var skorboardLen=-1;
-var person="undefined"; 
+var scoreBoard=new Array();
+var scoreBoardLen=-1;
+var person="";
 function init(){
-	person = prompt("Please enter your name", "Harry Potter");
 	tableID=new Array(
 		new Array("a1","a2","a3","a4"),
 		new Array("b1","b2","b3","b4"),
@@ -42,29 +41,38 @@ function init(){
 		new Array(),
 		new Array()
 	);
-	var i,j;
 	allPicChange(closePic);
+	var i,j;
 	for(i=0;i<8;i++){
 		for( j=0;j<2;j++){
 			while(true){
 				var randomx= Math.floor(Math.random() * 4);
 				var randomy= Math.floor(Math.random() * 4);
 				if(tablePic[randomx][randomy]==null){
-					tablePic[randomx][randomy]	= meyveler[i];
+					tablePic[randomx][randomy]	= fruits[i];
 					break;
 				}
 			}
 		}
 	}
+
 	puan=30;
 	document.getElementById("puan").innerHTML="PUAN: "+puan;
+
+	person = prompt("Please enter your name", "Harry Potter");
+	if(person === null){
+		person="undefined"; 
+	}
+
 	first=true;
 	findPic=0;
+
 	if(gameOver){
 		closeSound.pause();
 		closeSound.currentTime = 0;
 		backgroundGifChange('url(myGif.gif)');
 	}
+
 	gameOver=false;
 }
 function relaset(){
@@ -114,7 +122,7 @@ function clickt(i,j){
 				var obje=new Object();
 				obje.person=person;
 				obje.puan=puan;
-				skorboard[++skorboardLen]=obje;
+				scoreBoard[++scoreBoardLen]=obje;
 				sortAndShowNewTable();
 			}
 		}
@@ -154,12 +162,12 @@ function backgroundGifChange(back){
 	body.style.backgroundImage = back;
 }
 function sortAndShowNewTable(){
-	for(var i=0;i<skorboardLen;i++){
-		for(var j=0;j<skorboardLen;j++){
-			if(skorboard[j].puan>skorboard[j+1].puan){
-				var tmp=skorboard[j];
-				skorboard[j]=skorboard[j+1];
-				skorboard[j+1]=tmp;
+	for(var i=0;i<scoreBoardLen;i++){
+		for(var j=0;j<scoreBoardLen;j++){
+			if(scoreBoard[j].puan>scoreBoard[j+1].puan){
+				var tmp=scoreBoard[j];
+				scoreBoard[j]=scoreBoard[j+1];
+				scoreBoard[j+1]=tmp;
 			}
 		}
 	}
@@ -167,24 +175,11 @@ function sortAndShowNewTable(){
 	while(table.hasChildNodes()){
 		table.removeChild(table.firstChild);
 	}
-	for(var i=0;i<=skorboardLen;i++){
+	for(var i=0;i<=scoreBoardLen;i++){
 				var row = table.insertRow(0);
 				var cell1 = row.insertCell(0);
 				var cell2 = row.insertCell(1);
-				cell1.innerHTML = skorboard[i].person;
-				cell2.innerHTML = skorboard[i].puan;
+				cell1.innerHTML = scoreBoard[i].person;
+				cell2.innerHTML = scoreBoard[i].puan;
 	}
 }
-var table = document.getElementById("skors");
-
-// Create an empty <thead> element and add it to the table:
-var header = table.createTHead();
-
-// Create an empty <tr> element and add it to the first position of <thead>:
-var row = header.insertRow(0);     
-
-// Insert a new cell (<td>) at the first position of the "new" <tr> element:
-var cell = row.insertCell(0);
-
-// Add some bold text in the new cell:
-cell.innerHTML = "<b>This is a table header</b>";
