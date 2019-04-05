@@ -9,10 +9,13 @@ var tableID;
 var tablePic;
 
 var first=true;
+var relasetBool=false;
 var fi,fj;
+var si,sj;
 var puan=30;
 var gameOver=false;
 var findPic=0;
+var openPicCount=0;
 
 var butonClickSound=new Audio();
 butonClickSound.src="ses1.mp3";
@@ -24,8 +27,9 @@ var closeSound;
 
 var skorboard=new Array();
 var skorboardLen=-1;
-
+var person="undefined"; 
 function init(){
+	person = prompt("Please enter your name", "Harry Potter");
 	tableID=new Array(
 		new Array("a1","a2","a3","a4"),
 		new Array("b1","b2","b3","b4"),
@@ -63,7 +67,17 @@ function init(){
 	}
 	gameOver=false;
 }
+function relaset(){
+	if(!gameOver){
+		if(relasetBool){
+			relasetBool=false;
+			setClosePic(si,sj);
+			setClosePic(fi,fj);
+		}
+	}
+}
 function clickt(i,j){
+	setOpenPic(i,j);
 	if(!gameOver){
 		if(first){
 			fi=i;
@@ -73,13 +87,17 @@ function clickt(i,j){
 			if(fi==i && fj==j) {
 				setClosePic(i,j);
 				puan-=3;
+			}else if(si==i && sj==j && relasetBool){
+				relaset();
+				puan-=3;
 			}else if(tablePic[i][j]==tablePic[fi][fj]){
 				document.getElementById(tableID[i][j]).src = tablePic[i][j].replace('100x100','100x100');
 				findPic++;
 				puan+=6;
 			}else{
-				setClosePic(i,j);
-				setClosePic(fi,fj);
+				si=i;
+				sj=j;
+				relasetBool=true;
 				puan-=5;
 			}
 
@@ -92,7 +110,7 @@ function clickt(i,j){
 			first=true;
 			document.getElementById("puan").innerHTML="PUAN: "+puan;
 			if(gameOver){
-				var person = prompt("Please enter your name", "Harry Potter");
+				
 				var obje=new Object();
 				obje.person=person;
 				obje.puan=puan;
